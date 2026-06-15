@@ -1,0 +1,10 @@
+# Cache and temporary files
+working/feats/
+working/best_model.keras
+working/model_config.json
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Local settings
+.gemini/
