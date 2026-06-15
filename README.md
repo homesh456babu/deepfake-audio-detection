@@ -11,7 +11,8 @@ Unlike traditional baseline systems, this implementation utilizes a custom convo
 - [Performance Results](#-performance-results)
 - [Technical Methodology](#-technical-methodology)
 - [Repository Structure](#-repository-structure)
-- [Getting Started](#-getting-started)
+- [Trained Model Setup](#-trained-model-setup)
+- [Getting Started & Venv Setup](#-getting-started--venv-setup)
 - [Usage](#-usage)
 - [Dependencies](#-dependencies)
 
@@ -74,19 +75,54 @@ deepfake-audio-detection/
 
 ---
 
-## 🚀 Getting Started
+## 💾 Trained Model Setup
+To run the inference script (`predict.py`) or the Streamlit web dashboard (`app.py`) locally, you need the trained model:
+1. Run the `notebook.ipynb` in **Google Colab** to train the model using its free GPU runtime.
+2. Once the training finishes, download `best_model.keras` and `model_config.json` from the Colab file explorer.
+3. Place both files in the root of your local `deepfake-audio-detection` project folder.
 
-### Local Setup
+---
+
+## 🚀 Getting Started & Venv Setup
+
+> [!IMPORTANT]
+> **TensorFlow Compatibility**: TensorFlow does not currently support Python 3.13 or 3.14 on Windows. You **must** use **Python 3.10 or 3.11** to run the model locally.
+
+### Local Installation Steps
+
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/<your-username>/deepfake-audio-detection.git
+   git clone https://github.com/homesh456babu/deepfake-audio-detection.git
    cd deepfake-audio-detection
    ```
-2. **Install dependencies**:
+
+2. **Create a virtual environment (Venv) using Python 3.11**:
+   - **On Windows**:
+     ```powershell
+     # Ensure Python 3.11 is installed on your system
+     py -3.11 -m venv venv
+     ```
+   - **On macOS/Linux**:
+     ```bash
+     python3.11 -m venv venv
+     ```
+
+3. **Activate the virtual environment**:
+   - **On Windows (PowerShell)**:
+     ```powershell
+     venv\Scripts\Activate.ps1
+     ```
+   - **On macOS/Linux**:
+     ```bash
+     source venv/bin/activate
+     ```
+
+4. **Install the dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
-3. **Download libraries (Ubuntu/Debian)**:
+
+5. **Install system audio libraries** *(Linux/Debian systems only)*:
    ```bash
    sudo apt-get install libsndfile1
    ```
@@ -96,7 +132,7 @@ deepfake-audio-detection/
 ## 💻 Usage
 
 ### Command Line Inference (`predict.py`)
-Run predictions on any `.wav` file:
+Ensure your model (`best_model.keras`) is in the project folder, then run predictions on any `.wav` file:
 ```bash
 python predict.py path/to/audio.wav
 ```
