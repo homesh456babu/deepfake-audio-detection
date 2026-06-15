@@ -52,11 +52,11 @@ st.markdown("""
         margin-bottom: 20px;
     }
     </style>
-""", unsafe_ok=True)
+""", unsafe_allow_html=True)
 
 # App Title
-st.markdown("<div class='main-title'>🎙️ Deepfake Audio Detector</div>", unsafe_ok=True)
-st.markdown("<div class='subtitle'>Analyze speech recordings using SE-CNN-GRU Deep Learning models</div>", unsafe_ok=True)
+st.markdown("<div class='main-title'>🎙️ Deepfake Audio Detector</div>", unsafe_allow_html=True)
+st.markdown("<div class='subtitle'>Analyze speech recordings using SE-CNN-GRU Deep Learning models</div>", unsafe_allow_html=True)
 
 # Sidebar Info
 with st.sidebar:
@@ -138,9 +138,9 @@ if uploaded_file is not None:
                 
                 st.subheader("Detection Result")
                 if is_fake:
-                    st.markdown(f"<div class='card-fake'>🤖 Prediction: DEEPFAKE (AI-Generated)<br><span style='font-size: 15px; font-weight: normal;'>Confidence: {confidence * 100:.1f}% (Probability: {prob:.4f})</span></div>", unsafe_ok=True)
+                    st.markdown(f"<div class='card-fake'>🤖 Prediction: DEEPFAKE (AI-Generated)<br><span style='font-size: 15px; font-weight: normal;'>Confidence: {confidence * 100:.1f}% (Probability: {prob:.4f})</span></div>", unsafe_allow_html=True)
                 else:
-                    st.markdown(f"<div class='card-real'>👤 Prediction: GENUINE (Human Speech)<br><span style='font-size: 15px; font-weight: normal;'>Confidence: {confidence * 100:.1f}% (Probability: {prob:.4f})</span></div>", unsafe_ok=True)
+                    st.markdown(f"<div class='card-real'>👤 Prediction: GENUINE (Human Speech)<br><span style='font-size: 15px; font-weight: normal;'>Confidence: {confidence * 100:.1f}% (Probability: {prob:.4f})</span></div>", unsafe_allow_html=True)
             else:
                 st.warning("Prediction model not found. Please train and save 'best_model.keras' to run classification.")
                 
